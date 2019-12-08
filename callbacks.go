@@ -36,17 +36,19 @@ func validate(scope *gorm.Scope) {
 
 func flatValidatorErrors(validatorErrors govalidator.Errors) []govalidator.Error {
 	resultErrors := []govalidator.Error{}
+	flatInner(validatorErrors, &resultErrors)
+	return resultErrors
+}
+
+func flatInner(validatorErrors govalidator.Errors, flattened *[]govalidator.Error) {
 	for _, validatorError := range validatorErrors.Errors() {
 		if errors, ok := validatorError.(govalidator.Errors); ok {
-			for _, e := range errors {
-				resultErrors = append(resultErrors, e.(govalidator.Error))
-			}
+			flatInner(errors, flattened)
 		}
 		if e, ok := validatorError.(govalidator.Error); ok {
-			resultErrors = append(resultErrors, e)
+			*flattened = append(*flattened, e)
 		}
 	}
-	return resultErrors
 }
 
 func formattedError(err govalidator.Error, resource interface{}) error {
