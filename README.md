@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/a69/validations.svg?branch=master)](https://travis-ci.org/a69/validations)
 [![GoDoc](https://godoc.org/github.com/a69/validations?status.svg)](https://godoc.org/github.com/a69/validations)
 [![Go Report Card](https://goreportcard.com/badge/github.com/a69/validations)](https://goreportcard.com/report/github.com/a69/validations)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fa69%2Fvalidations.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2Fa69%2Fvalidations?ref=badge_small)
+
 Validations provides a means to [*validate*](https://en.wikipedia.org/wiki/Data_validation) [GORM](https://github.com/jinzhu/gorm) models when creating and updating them.
 
 ### Register GORM Callbacks
