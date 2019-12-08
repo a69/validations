@@ -1,4 +1,7 @@
 # Validations
+[![Build Status](https://travis-ci.org/a69/validations.svg?branch=master)](https://travis-ci.org/a69/validations)
+[![GoDoc](https://godoc.org/github.com/a69/validations?status.svg)](https://godoc.org/github.com/a69/validations)
+[![Go Report Card](https://goreportcard.com/badge/github.com/a69/validations)](https://goreportcard.com/report/github.com/a69/validations)
 
 Validations provides a means to [*validate*](https://en.wikipedia.org/wiki/Data_validation) [GORM](https://github.com/jinzhu/gorm) models when creating and updating them.
 
@@ -7,14 +10,17 @@ Validations provides a means to [*validate*](https://en.wikipedia.org/wiki/Data_
 Validations uses [GORM](https://github.com/jinzhu/gorm) callbacks to handle *validations*, so you will need to register callbacks first:
 
 ```go
+package main
 import (
+  "github.com/a69/validations"
   "github.com/jinzhu/gorm"
-  "github.com/qor/validations"
 )
 
 func main() {
   db, err := gorm.Open("sqlite3", "demo_db")
-
+  if err!=nil{
+    panic(err)
+  }
   validations.RegisterCallbacks(db)
 }
 ```
@@ -56,7 +62,7 @@ db.Create(&User{}).GetErrors() // => []error{"age need to be 18+", "name can't b
 
 ## [Govalidator](https://github.com/asaskevich/govalidator) integration
 
-Qor [Validations](https://github.com/qor/validations) supports [govalidator](https://github.com/asaskevich/govalidator), so you could add a tag into your struct for some common *validations*, such as *check required*, *numeric*, *length*, etc.
+[Validations](https://github.com/a69/validations) supports [govalidator](https://github.com/asaskevich/govalidator), so you could add a tag into your struct for some common *validations*, such as *check required*, *numeric*, *length*, etc.
 
 ```
 type User struct {
@@ -70,7 +76,7 @@ type User struct {
 
 ## Customize errors on form field
 
-If you want to display errors for each form field in [QOR Admin](http://github.com/qor/admin), you could register your error like this:
+If you want to create specific validation errors for each form field, you could register your error like this:
 
 ```go
 func (user User) Validate(db *gorm.DB) {
@@ -79,10 +85,6 @@ func (user User) Validate(db *gorm.DB) {
   }
 }
 ```
-
-## Try it out for yourself
-
-Checkout the [http://demo.getqor.com/admin/products/1](http://demo.getqor.com/admin/products/1) demo, change `Name` to be a blank string and save to see what happens.
 
 ## License
 
