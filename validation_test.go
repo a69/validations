@@ -31,11 +31,13 @@ func getDB() *gorm.DB {
 
 	if os.Getenv("TEST_DB") == "postgres" {
 		db, err = gorm.Open("postgres", fmt.Sprintf("postgres://%s:%s@localhost/%s?sslmode=disable", dbuser, dbpwd, dbname))
-	} else {
-		// CREATE USER 'qor'@'localhost' IDENTIFIED BY 'qor';
-		// CREATE DATABASE qor_test;
-		// GRANT ALL ON qor_test.* TO 'qor'@'localhost';
+	} else if os.Getenv("TEST_DB") == "postgres" {
+		// CREATE USER 'validate'@'localhost' IDENTIFIED BY 'validate';
+		// CREATE DATABASE validate_test;
+		// GRANT ALL ON validate_test.* TO 'sqlite3'@'localhost';
 		db, err = gorm.Open("mysql", fmt.Sprintf("%s:%s@/%s?charset=utf8&parseTime=True&loc=Local", dbuser, dbpwd, dbname))
+	} else {
+		db, err = gorm.Open("sqlite3", "file:validate?mode=memory&cache=shared")
 	}
 
 	if err != nil {
