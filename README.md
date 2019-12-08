@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/a69/validations.svg?branch=master)](https://travis-ci.org/a69/validations)
 [![GoDoc](https://godoc.org/github.com/a69/validations?status.svg)](https://godoc.org/github.com/a69/validations)
 [![Go Report Card](https://goreportcard.com/badge/github.com/a69/validations)](https://goreportcard.com/report/github.com/a69/validations)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fa69%2Fvalidations.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fa69%2Fvalidations?ref=badge_shield)
 
 Validations provides a means to [*validate*](https://en.wikipedia.org/wiki/Data_validation) [GORM](https://github.com/jinzhu/gorm) models when creating and updating them.
 
@@ -89,3 +90,6 @@ func (user User) Validate(db *gorm.DB) {
 ## License
 
 Released under the [MIT License](http://opensource.org/licenses/MIT).
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fa69%2Fvalidations.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fa69%2Fvalidations?ref=badge_large)
